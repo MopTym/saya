@@ -1,0 +1,26 @@
+{
+  "name": "saya",
+  "version": "1.0.0",
+  "description": "personal JS library",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MopTym/saya.git"
+  },
+  "keywords": [
+    "saya",
+    "js"
+  ],
+  "author": "MopTym <moptym@163.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MopTym/saya/issues"
+  },
+  "homepage": "https://github.com/MopTym/saya",
+  "devDependencies": {
+    "mocha": "^2.3.4"
+  }
+}
