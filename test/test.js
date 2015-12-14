@@ -62,7 +62,8 @@
 		"./data.spec": 5,
 		"./event.spec": 6,
 		"./init.spec": 7,
-		"./show-hide.spec": 8
+		"./set.spec": 8,
+		"./show-hide.spec": 9
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -187,6 +188,12 @@
 			} else {
 				return Saya.data(this[0], key);
 			}
+		},
+		eq: function eq(index) {
+			if (!isNaN(index)) {
+				return Saya(this[index < 0 ? this.length + index : index]);
+			}
+			return Saya();
 		},
 		show: function show() {
 			return this.each(Saya.show);
@@ -513,6 +520,32 @@
 
 /***/ },
 /* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _src = __webpack_require__(3);
+
+	var _src2 = _interopRequireDefault(_src);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	describe('Set Tests', function () {
+
+	    var body = document.body;
+
+	    var $body = (0, _src2.default)(body);
+
+	    it('eq', function () {
+	        expect($body.eq(0)[0]).to.equal(body);
+	        expect($body.eq(-1)[0]).to.equal(body);
+	        expect($body.eq(-2).length).to.equal(0);
+	        expect($body.eq(1).length).to.equal(0);
+	    });
+	});
+
+/***/ },
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

@@ -64,6 +64,13 @@ Object.assign(Saya.prototype, {
 		}
 	},
 	
+	eq(index) {
+		if (!isNaN(index)) {
+			return Saya(this[index < 0? (this.length + index): index])
+		}
+		return Saya()
+	},
+	
 	show() {
 		return this.each(Saya.show)
 	},
