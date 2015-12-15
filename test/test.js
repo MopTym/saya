@@ -117,10 +117,6 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
 	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
 
 	/**
@@ -355,7 +351,10 @@
 	    return typeof tar !== 'undefined';
 	}
 
-	exports.default = Saya;
+	// for webpack with babel.
+	// if use 'export default' the final output wil be [ moduleObject.default = Saya ]
+	// but we need [ moduleObject = Saya ].
+	module.exports = Saya;
 
 /***/ },
 /* 4 */

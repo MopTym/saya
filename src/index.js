@@ -229,4 +229,7 @@ function isSet(tar) {
 
 
 
-export default Saya
+// for webpack with babel.
+// if use 'export default' the final output wil be [ moduleObject.default = Saya ]
+// but we need [ moduleObject = Saya ].
+module.exports = Saya

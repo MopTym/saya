@@ -1,9 +1,7 @@
-var path = require('path')
-
 module.exports = {
     entry: './test/spec/index.js',
     output: {
-        path: path.resolve('./test'),
+        path: './test',
         filename: 'test.js'
     },
     cache: true,
