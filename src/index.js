@@ -188,7 +188,10 @@ Object.assign(Saya, {
     },
 
     hasClass(elem, name) {
-        return elem && name && (new RegExp('\\b' + name + '\\b')).test(this.attr(elem, 'class'))
+        if (elem && name) {
+            return (new RegExp('\\b' + name + '\\b')).test(this.attr(elem, 'class'))
+        }
+        return false
     },
     
     toggleClass(elem, name) {
