@@ -200,9 +200,7 @@ Object.assign(Saya, {
         } else {
             this.addClass(elem, name)
         }
-    },
-    
-    trim: trim
+    }
     
 })
 
@@ -217,10 +215,6 @@ function access(elems, fn, key, value) {
     } else {
         return elems.length? fn(elems[0], key): undefined
     }
-}
-
-function trim(str = '') {
-    return str.replace(/(^\s+)|(\s+$)/g, '')
 }
 
 function isSet(tar) {

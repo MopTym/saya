@@ -320,10 +320,7 @@
 	        } else {
 	            this.addClass(elem, name);
 	        }
-	    },
-
-	    trim: trim
-
+	    }
 	});
 
 	function isArrayLike(tar) {
@@ -339,12 +336,6 @@
 	    } else {
 	        return elems.length ? fn(elems[0], key) : undefined;
 	    }
-	}
-
-	function trim() {
-	    var str = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
-
-	    return str.replace(/(^\s+)|(\s+$)/g, '');
 	}
 
 	function isSet(tar) {
