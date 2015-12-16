@@ -1,1 +1,296 @@
-!function(t,n){"object"==typeof exports&&"object"==typeof module?module.exports=n():"function"==typeof define&&define.amd?define([],n):"object"==typeof exports?exports.Saya=n():t.Saya=n()}(this,function(){return function(t){function n(r){if(e[r])return e[r].exports;var o=e[r]={exports:{},id:r,loaded:!1};return t[r].call(o.exports,o,o.exports,n),o.loaded=!0,o.exports}var e={};return n.m=t,n.c=e,n.p="",n(0)}([function(t,n){"use strict";function e(t){return t&&"undefined"!=typeof Symbol&&t.constructor===Symbol?"symbol":typeof t}function r(t){return"object"===("undefined"==typeof t?"undefined":e(t))&&s(t.length)}function o(t,n,e,r){return s(r)?(a.each(t,function(t){return n(t,e,r)}),t):t.length?n(t[0],e):void 0}function s(t){return"undefined"!=typeof t}var i=Object.assign||function(t){for(var n=1;n<arguments.length;n++){var e=arguments[n];for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&(t[r]=e[r])}return t},u="SAYA"+Date.now(),a=function c(t){return new c.prototype.Init(t)};a.prototype={constructor:a,length:0,Init:function(t){var n=this;return t?t instanceof a?t:(t.nodeType?(this[0]=t,this.length=1):("string"==typeof t&&(t=document.querySelectorAll(t)||[]),a.each(t,function(t,e){return n[e]=t}),this.length=t.length),this):this}},a.prototype.Init.prototype=a.prototype,i(a.prototype,{each:function(t,n,e,r){return a.each(this,t,n,e,r)},data:function(t,n){return s(n)?this.each(function(e){return a.data(e,t,n)}):a.data(this[0],t)},eq:function(t){return isNaN(t)?a():a(this[0>t?this.length+t:t])},show:function(){return this.each(a.show)},hide:function(){return this.each(a.hide)},on:function(t,n){var e=arguments.length<=2||void 0===arguments[2]?!1:arguments[2];return this.each(function(r){return a.on(r,t,n,e)})},off:function(t,n){var e=arguments.length<=2||void 0===arguments[2]?!1:arguments[2];return this.each(function(r){return a.off(r,t,n,e)})},attr:function(t,n){return o(this,a.attr,t,n)},removeAttr:function(t){return this.each(function(n){return a.removeAttr(n,t)})},addClass:function(t){return this.each(function(n){return a.addClass(n,t)})},removeClass:function(t){return this.each(function(n){return a.removeClass(n,t)})},hasClass:function(t){return!this.each(function(n){return!a.hasClass(n,t)},!1,!0,!1)},toggleClass:function(t){return this.each(function(n){return a.toggleClass(n,t)})}}),i(a,{each:function(t,n,e,o,s){if(r(t))for(var i,u=0,a=t.length;a>u;u++)if(i=e?n.call(t[u],t[u],u,t):n(t[u],u,t),i===!1&&o)return s;return t},data:function(t,n,e){return t?(t[u]||Object.defineProperty(t,u,{value:{},configurable:!0}),s(e)?void(t[u][n]=e):t[u][n]):void 0},show:function(t){t&&(t.style.display="block")},hide:function(t){t&&(t.style.display="none")},on:function(t,n,e){var r=arguments.length<=3||void 0===arguments[3]?!1:arguments[3];t&&t.addEventListener(n,e,r)},off:function(t,n,e){var r=arguments.length<=3||void 0===arguments[3]?!1:arguments[3];t&&t.removeEventListener(n,e,r)},attr:function(t,n,e){if(t){if(!s(e))return t.getAttribute(n)||"";t.setAttribute(n,e)}},removeAttr:function(t,n){t&&t.removeAttribute(n)},addClass:function(t,n){if(t&&n&&!this.hasClass(t,n)){var e=this.attr(t,"class").trim(),r=(e+" "+n).trim();this.attr(t,"class",r)}},removeClass:function(t,n){if(t&&n){var e=new RegExp("\\s*\\b"+n+"\\b\\s*","g"),r=this.attr(t,"class").replace(e," ").trim();this.attr(t,"class",r)}},hasClass:function(t,n){return t&&n?new RegExp("\\b"+n+"\\b").test(this.attr(t,"class")):!1},toggleClass:function(t,n){this.hasClass(t,n)?this.removeClass(t,n):this.addClass(t,n)}}),t.exports=a}])});
+/*! Saya - Personal JS library for MopTym<moptym@163.com> */
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["Saya"] = factory();
+	else
+		root["Saya"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
+
+	/**
+	 * *****************************************************
+	 * 
+	 * “咦？” —— Saya疑惑地看着你
+	 * 
+	 * *****************************************************
+	 * 
+	 * Saya - Personal JS library for MopTym<moptym@163.com>
+	 * 
+	 * *****************************************************
+	 * 
+	 * Very jQuery
+	 * 
+	 * Nooot support IE < 10
+	 * 
+	 * *****************************************************
+	 */
+
+	var CUID = 'SAYA' + Date.now();
+
+	var Saya = function Saya(selector) {
+	    return new Saya.prototype.Init(selector);
+	};
+
+	Saya.prototype = {
+
+	    constructor: Saya,
+
+	    length: 0,
+
+	    Init: function Init(selector) {
+	        var _this = this;
+
+	        if (!selector) return this;
+	        if (selector instanceof Saya) return selector;
+	        if (selector.nodeType) {
+	            this[0] = selector;
+	            this.length = 1;
+	        } else {
+	            if (typeof selector === 'string') {
+	                selector = document.querySelectorAll(selector) || [];
+	            }
+	            Saya.each(selector, function (elem, index) {
+	                return _this[index] = elem;
+	            });
+	            this.length = selector.length;
+	        }
+	        return this;
+	    }
+	};
+
+	Saya.prototype.Init.prototype = Saya.prototype;
+
+	_extends(Saya.prototype, {
+	    each: function each(callback, isContext, isFalseBreak, breakValue) {
+	        return Saya.each(this, callback, isContext, isFalseBreak, breakValue);
+	    },
+	    data: function data(key, value) {
+	        if (isSet(value)) {
+	            return this.each(function (elem) {
+	                return Saya.data(elem, key, value);
+	            });
+	        } else {
+	            return Saya.data(this[0], key);
+	        }
+	    },
+	    eq: function eq(index) {
+	        if (!isNaN(index)) {
+	            return Saya(this[index < 0 ? this.length + index : index]);
+	        }
+	        return Saya();
+	    },
+	    show: function show() {
+	        return this.each(Saya.show);
+	    },
+	    hide: function hide() {
+	        return this.each(Saya.hide);
+	    },
+	    on: function on(type, listener) {
+	        var useCapture = arguments.length <= 2 || arguments[2] === undefined ? false : arguments[2];
+
+	        return this.each(function (elem) {
+	            return Saya.on(elem, type, listener, useCapture);
+	        });
+	    },
+	    off: function off(type, listener) {
+	        var useCapture = arguments.length <= 2 || arguments[2] === undefined ? false : arguments[2];
+
+	        return this.each(function (elem) {
+	            return Saya.off(elem, type, listener, useCapture);
+	        });
+	    },
+	    attr: function attr(key, value) {
+	        return access(this, Saya.attr, key, value);
+	    },
+	    removeAttr: function removeAttr(key) {
+	        return this.each(function (elem) {
+	            return Saya.removeAttr(elem, key);
+	        });
+	    },
+	    addClass: function addClass(name) {
+	        return this.each(function (elem) {
+	            return Saya.addClass(elem, name);
+	        });
+	    },
+	    removeClass: function removeClass(name) {
+	        return this.each(function (elem) {
+	            return Saya.removeClass(elem, name);
+	        });
+	    },
+	    hasClass: function hasClass(name) {
+	        return !this.each(function (elem) {
+	            return !Saya.hasClass(elem, name);
+	        }, false, true, false);
+	    },
+	    toggleClass: function toggleClass(name) {
+	        return this.each(function (elem) {
+	            return Saya.toggleClass(elem, name);
+	        });
+	    }
+	});
+
+	_extends(Saya, {
+	    each: function each(elems, fn, isContext, isFalseBreak, breakValue) {
+	        if (isArrayLike(elems)) {
+	            for (var i = 0, len = elems.length, val; i < len; i++) {
+	                val = isContext ? fn.call(elems[i], elems[i], i, elems) : fn(elems[i], i, elems);
+	                if (val === false && isFalseBreak) {
+	                    return breakValue;
+	                }
+	            }
+	        }
+	        return elems;
+	    },
+	    data: function data(elem, key, value) {
+	        if (!elem) return;
+	        if (!elem[CUID]) {
+	            Object.defineProperty(elem, CUID, {
+	                value: {},
+	                configurable: true
+	            });
+	        }
+	        if (isSet(value)) {
+	            elem[CUID][key] = value;
+	        } else {
+	            return elem[CUID][key];
+	        }
+	    },
+	    show: function show(elem) {
+	        if (elem) elem.style.display = 'block';
+	    },
+	    hide: function hide(elem) {
+	        if (elem) elem.style.display = 'none';
+	    },
+	    on: function on(elem, type, listener) {
+	        var useCapture = arguments.length <= 3 || arguments[3] === undefined ? false : arguments[3];
+
+	        if (elem) elem.addEventListener(type, listener, useCapture);
+	    },
+	    off: function off(elem, type, listener) {
+	        var useCapture = arguments.length <= 3 || arguments[3] === undefined ? false : arguments[3];
+
+	        if (elem) elem.removeEventListener(type, listener, useCapture);
+	    },
+	    attr: function attr(elem, key, value) {
+	        if (elem) {
+	            if (isSet(value)) {
+	                elem.setAttribute(key, value);
+	            } else {
+	                return elem.getAttribute(key) || '';
+	            }
+	        }
+	    },
+	    removeAttr: function removeAttr(elem, key) {
+	        if (elem) elem.removeAttribute(key);
+	    },
+	    addClass: function addClass(elem, name) {
+	        if (elem && name && !this.hasClass(elem, name)) {
+	            var cur = this.attr(elem, 'class').trim();
+	            var res = (cur + ' ' + name).trim();
+	            this.attr(elem, 'class', res);
+	        }
+	    },
+	    removeClass: function removeClass(elem, name) {
+	        if (elem && name) {
+	            var reg = new RegExp('\\s*\\b' + name + '\\b\\s*', 'g');
+	            var res = this.attr(elem, 'class').replace(reg, ' ').trim();
+	            this.attr(elem, 'class', res);
+	        }
+	    },
+	    hasClass: function hasClass(elem, name) {
+	        if (elem && name) {
+	            return new RegExp('\\b' + name + '\\b').test(this.attr(elem, 'class'));
+	        }
+	        return false;
+	    },
+	    toggleClass: function toggleClass(elem, name) {
+	        if (this.hasClass(elem, name)) {
+	            this.removeClass(elem, name);
+	        } else {
+	            this.addClass(elem, name);
+	        }
+	    }
+	});
+
+	function isArrayLike(tar) {
+	    return (typeof tar === 'undefined' ? 'undefined' : _typeof(tar)) === 'object' && isSet(tar.length);
+	}
+
+	function access(elems, fn, key, value) {
+	    if (isSet(value)) {
+	        Saya.each(elems, function (elem) {
+	            return fn(elem, key, value);
+	        });
+	        return elems;
+	    } else {
+	        return elems.length ? fn(elems[0], key) : undefined;
+	    }
+	}
+
+	function isSet(tar) {
+	    return typeof tar !== 'undefined';
+	}
+
+	// for webpack with babel.
+	// if use 'export default' the final output will be [ moduleObject.default = Saya ]
+	// but we need [ moduleObject = Saya ].
+	module.exports = Saya;
+
+/***/ }
+/******/ ])
+});
+;

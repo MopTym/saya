@@ -4,6 +4,7 @@
   "description": "Personal JS library",
   "main": "dist/saya.js",
   "scripts": {
+    "build": "webpack && webpack -p --config webpack.min.config.js",
     "test": "webpack --config webpack.test.config.js && mocha-phantomjs test/testRunner.html"
   },
   "repository": {

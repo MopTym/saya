@@ -4,7 +4,7 @@ module.exports = {
     entry: './src/index.js',
     output: {
         path: './dist',
-        filename: 'saya.js',
+        filename: 'saya.min.js',
         library: ['Saya'],
         libraryTarget: 'umd'
     },
