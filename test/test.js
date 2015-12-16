@@ -173,8 +173,8 @@
 	Saya.prototype.Init.prototype = Saya.prototype;
 
 	_extends(Saya.prototype, {
-	    each: function each(callback, isFalseBreak, breakValue) {
-	        return Saya.each(this, callback, isFalseBreak, breakValue);
+	    each: function each(callback, isContext, isFalseBreak, breakValue) {
+	        return Saya.each(this, callback, isContext, isFalseBreak, breakValue);
 	    },
 	    data: function data(key, value) {
 	        if (isSet(value)) {
@@ -232,7 +232,7 @@
 	    hasClass: function hasClass(name) {
 	        return !this.each(function (elem) {
 	            return !Saya.hasClass(elem, name);
-	        }, true, false);
+	        }, false, true, false);
 	    },
 	    toggleClass: function toggleClass(name) {
 	        return this.each(function (elem) {
@@ -242,10 +242,11 @@
 	});
 
 	_extends(Saya, {
-	    each: function each(elems, fn, isFalseBreak, breakValue) {
+	    each: function each(elems, fn, isContext, isFalseBreak, breakValue) {
 	        if (isArrayLike(elems)) {
-	            for (var i = 0, len = elems.length; i < len; i++) {
-	                if (fn(elems[i], i, elems) === false && isFalseBreak) {
+	            for (var i = 0, len = elems.length, val; i < len; i++) {
+	                val = isContext ? fn.call(elems[i], elems[i], i, elems) : fn(elems[i], i, elems);
+	                if (val === false && isFalseBreak) {
 	                    return breakValue;
 	                }
 	            }
@@ -343,7 +344,7 @@
 	}
 
 	// for webpack with babel.
-	// if use 'export default' the final output wil be [ moduleObject.default = Saya ]
+	// if use 'export default' the final output will be [ moduleObject.default = Saya ]
 	// but we need [ moduleObject = Saya ].
 	module.exports = Saya;
 

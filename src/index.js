@@ -52,8 +52,8 @@ Saya.prototype.Init.prototype = Saya.prototype
 
 Object.assign(Saya.prototype, {
     
-    each(callback, isFalseBreak, breakValue) {
-        return Saya.each(this, callback, isFalseBreak, breakValue)
+    each(callback, isContext, isFalseBreak, breakValue) {
+        return Saya.each(this, callback, isContext, isFalseBreak, breakValue)
     },
     
     data(key, value) {
@@ -104,7 +104,7 @@ Object.assign(Saya.prototype, {
     },
     
     hasClass(name) {
-        return !this.each((elem) => !Saya.hasClass(elem, name), true, false)
+        return !this.each((elem) => !Saya.hasClass(elem, name), false, true, false)
     },
     
     toggleClass(name) {
@@ -115,10 +115,11 @@ Object.assign(Saya.prototype, {
 
 Object.assign(Saya, {
     
-    each(elems, fn, isFalseBreak, breakValue) {
+    each(elems, fn, isContext, isFalseBreak, breakValue) {
         if (isArrayLike(elems)) {
-            for (let i = 0, len = elems.length; i < len; i++) {
-                if (fn(elems[i], i, elems) === false && isFalseBreak) {
+            for (let i = 0, len = elems.length, val; i < len; i++) {
+                val = isContext? fn.call(elems[i], elems[i], i, elems): fn(elems[i], i, elems)
+                if (val === false && isFalseBreak) {
                     return breakValue
                 }
             }
@@ -224,6 +225,6 @@ function isSet(tar) {
 
 
 // for webpack with babel.
-// if use 'export default' the final output wil be [ moduleObject.default = Saya ]
+// if use 'export default' the final output will be [ moduleObject.default = Saya ]
 // but we need [ moduleObject = Saya ].
 module.exports = Saya
