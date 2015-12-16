@@ -23,5 +23,6 @@ module.exports = {
     },
     plugins: [
         new webpack.BannerPlugin('Saya - Personal JS library for MopTym<moptym@163.com>')
-    ]
+    ],
+    devtool: 'source-map'
 }
