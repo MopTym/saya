@@ -1,10 +1,18 @@
 var webpack = require('webpack')
+var npmCfg = require('../package.json')
+
+var banner = [
+    'Saya v' + npmCfg.version,
+    '(c) ' + (new Date().getFullYear()) + ' ' + npmCfg.author,
+    'Released under the ' + npmCfg.license + ' License.',
+    'Homepage - ' + npmCfg.homepage
+].join('\n')
 
 module.exports = {
     entry: './src/index.js',
     output: {
         path: './dist',
-        filename: 'saya.min.js',
+        filename: 'saya.js',
         library: ['Saya'],
         libraryTarget: 'umd'
     },
@@ -22,7 +30,6 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.BannerPlugin('Saya - Personal JS library for MopTym<moptym@163.com>')
-    ],
-    devtool: 'source-map'
+        new webpack.BannerPlugin(banner)
+    ]
 }

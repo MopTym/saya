@@ -1,4 +1,9 @@
-/*! Saya - Personal JS library for MopTym<moptym@163.com> */
+/*!
+ * Saya v0.2.1
+ * (c) 2015 MopTym <moptym@163.com>
+ * Released under the MIT License.
+ * Homepage - https://github.com/MopTym/saya
+ */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
