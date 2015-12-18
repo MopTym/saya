@@ -63,7 +63,8 @@
 		"./event.spec": 6,
 		"./init.spec": 7,
 		"./set.spec": 8,
-		"./show-hide.spec": 9
+		"./show-hide.spec": 9,
+		"./style.spec": 10
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -214,6 +215,13 @@
 	    attr: function attr(key, value) {
 	        return access(this, Saya.attr, key, value);
 	    },
+	    css: function css(name, value) {
+	        if (typeof name === 'string' && !isSet(value)) {
+	            return Saya.css(this[0], name);
+	        } else {
+	            return access(this, Saya.css, name, value);
+	        }
+	    },
 	    removeAttr: function removeAttr(key) {
 	        return this.each(function (elem) {
 	            return Saya.removeAttr(elem, key);
@@ -289,6 +297,21 @@
 	                elem.setAttribute(key, value);
 	            } else {
 	                return elem.getAttribute(key) || '';
+	            }
+	        }
+	    },
+	    css: function css(elem, name, value) {
+	        if (elem && name) {
+	            if (typeof name === 'string') {
+	                if (isSet(value)) {
+	                    elem.style[name] = value;
+	                } else {
+	                    return elem.style[name];
+	                }
+	            } else {
+	                for (var key in name) {
+	                    elem.style[key] = name[key];
+	                }
 	            }
 	        }
 	    },
@@ -565,6 +588,36 @@
 	    it('show', function () {
 	        $elem.show();
 	        expect(window.getComputedStyle(elem).display).not.to.equal('none');
+	    });
+	});
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _src = __webpack_require__(3);
+
+	var _src2 = _interopRequireDefault(_src);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	describe('Style Tests', function () {
+
+	    var elem = document.createElement('div');
+	    var $elem = (0, _src2.default)(elem);
+
+	    it('css', function () {
+	        $elem.css('position', 'absolute');
+	        expect(elem.style.position).to.equal('absolute');
+	        expect($elem.css('position')).to.equal('absolute');
+	        $elem.css('position', '');
+	        expect(elem.style.position).to.equal('');
+	        $elem.css({
+	            position: 'absolute'
+	        });
+	        expect(elem.style.position).to.equal('absolute');
 	    });
 	});
 

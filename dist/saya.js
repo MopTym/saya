@@ -161,6 +161,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    attr: function attr(key, value) {
 	        return access(this, Saya.attr, key, value);
 	    },
+	    css: function css(name, value) {
+	        if (typeof name === 'string' && !isSet(value)) {
+	            return Saya.css(this[0], name);
+	        } else {
+	            return access(this, Saya.css, name, value);
+	        }
+	    },
 	    removeAttr: function removeAttr(key) {
 	        return this.each(function (elem) {
 	            return Saya.removeAttr(elem, key);
@@ -236,6 +243,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	                elem.setAttribute(key, value);
 	            } else {
 	                return elem.getAttribute(key) || '';
+	            }
+	        }
+	    },
+	    css: function css(elem, name, value) {
+	        if (elem && name) {
+	            if (typeof name === 'string') {
+	                if (isSet(value)) {
+	                    elem.style[name] = value;
+	                } else {
+	                    return elem.style[name];
+	                }
+	            } else {
+	                for (var key in name) {
+	                    elem.style[key] = name[key];
+	                }
 	            }
 	        }
 	    },

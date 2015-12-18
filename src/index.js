@@ -91,6 +91,14 @@ Object.assign(Saya.prototype, {
         return access(this, Saya.attr, key, value)
     },
     
+    css(name, value) {
+        if (typeof name === 'string' && !isSet(value)) {
+            return Saya.css(this[0], name)
+        } else {
+            return access(this, Saya.css, name, value)
+        }
+    },
+    
     removeAttr(key) {
         return this.each((elem) => Saya.removeAttr(elem, key))
     },
@@ -164,6 +172,22 @@ Object.assign(Saya, {
                 elem.setAttribute(key, value)
             } else {
                 return elem.getAttribute(key) || ''
+            }
+        }
+    },
+    
+    css(elem, name, value) {
+        if (elem && name) {
+            if (typeof name === 'string') {
+                if (isSet(value)) {
+                    elem.style[name] = value
+                } else {
+                    return elem.style[name]
+                }
+            } else {
+                for (let key in name) {
+                    elem.style[key] = name[key]
+                }
             }
         }
     },
