@@ -1,4 +1,4 @@
-![preview](https://raw.github.com/MopTym/saya/master/saya.jpg)
+![preview](saya.jpg)
 
 # Saya 
 [![Build Status](https://img.shields.io/travis/MopTym/saya.svg)](https://travis-ci.org/MopTym/saya)
